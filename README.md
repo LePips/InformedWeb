@@ -5,6 +5,8 @@ Django web server to communicate with Firebase.
 Nothing will be stored in the Django database, this is only for communication
 with Firebase to easily view, add, and delete data.
 
+Eventually this will be hosted online so that tampering is prevented.
+
 ### Installation
 
 Written for Python 3.7.1 and Django 2.1.4
