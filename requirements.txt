@@ -2,3 +2,6 @@ django
 fabric==1.14.1
 firebase-admin
 google-cloud-firestore
+gunicorn==19.6.0
+django_heroku
+whitenoise
