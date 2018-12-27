@@ -22,8 +22,6 @@ class Firebase():
         db = firestore.client()
         self.candidates_reference = db.collection(u'candidates')
         self.elections_reference = db.collection(u'elections')
-        self.candidate_cache = {}
-        self.election_cache = {}
 
     @staticmethod
     def instance():
@@ -43,26 +41,18 @@ class Firebase():
         return ids
 
     def get_candidate(self, id):
-        if id in self.candidate_cache:
-            return self.candidate_cache[id]
-        else:
-            document_ref = self.candidates_reference.document(id).get()
-            candidate_dict = document_ref.to_dict()
-            first = candidate_dict["first"]
-            last = candidate_dict["last"]
-            id = document_ref.id
-            candidate = Candidate(first, last, id)
-            self.candidate_cache[id] = candidate
-            return candidate
+        document_ref = self.candidates_reference.document(id).get()
+        candidate_dict = document_ref.to_dict()
+        first = candidate_dict["first"]
+        last = candidate_dict["last"]
+        id = document_ref.id
+        candidate = Candidate(first, last, id)
+        return candidate
 
     def get_election(self, id):
-        if id in self.election_cache:
-            return self.election_cache[id]
-        else:
-            document_ref = self.elections_reference.document(id).get()
-            election = document_ref.to_dict()
-            self.election_cache[id] = election
-            return election
+        document_ref = self.elections_reference.document(id).get()
+        election = document_ref.to_dict()
+        return election
 
     def set_candidate(self, candidate):
         document_ref = self.candidates_reference.document(candidate.id)
@@ -71,7 +61,6 @@ class Firebase():
             u'last': candidate.last,
             u'elections': []
         })
-        self.candidate_cache[candidate.id] = candidate
 
 
     # def getUsersNames(self):
@@ -102,7 +91,7 @@ def getKeyFile():
             jsonFiles.append(f)
 
     if len(jsonFiles) == 0:
-        raise Exception("More Firebase key available")
+        raise Exception("No Firebase key available")
     elif len(jsonFiles) > 1:
         raise Exception("Multiple json files in directory")
 
