@@ -41,7 +41,7 @@ from Firebase should be structured. More to come.
 ### Election
 ```
 {
-    "id": "660c2206",
+    "id": "62JsO47",
     "title": "2000 Presidential Election",
     "category": "national",
     "coverImageUrl": "image.jpg",
@@ -60,3 +60,25 @@ from Firebase should be structured. More to come.
         }
     ]
 }
+```
+
+### Candidate
+```
+{
+  "id": "2JsO47",
+  "imageUrl": "image.jpg",
+  "elections": [
+    "hjk5432",
+    "432kja"
+  ],
+  "sections": [
+    {
+      "title": "bio",
+      "references": [
+        "dragomax2000, hillo2343, runningrenob"
+      ],
+      "content": "Ex adipisicing reprehenderit officia pariatur ad ut commodo irure reprehenderit cillum excepteur. Id eiusmod cillum nisi id pariatur excepteur."
+    }
+  ]
+}
+```
