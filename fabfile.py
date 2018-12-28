@@ -10,9 +10,17 @@ BASE_DIR = os.path.sep.join((os.path.dirname(__file__), ''))
 @runs_once
 def start():
     """
-    Runs the local Django server on port 8080
+    Runs the local Django server on port 8080 and launches page in browser
     """
     local('open "http://127.0.0.1:8080/" && python3 ./manage.py runserver 8080')
+
+@task
+@runs_once
+def run():
+    """
+    Runs the local Django server on port 8080
+    """
+    local('python3 ./manage.py runserver 8080')
 
 @task
 @runs_once

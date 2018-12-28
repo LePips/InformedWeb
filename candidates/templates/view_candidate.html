@@ -14,22 +14,17 @@
 	<a class="navbar-brand mb-0 h1" href="/">Informed Web Portal</a>
 </nav>
 
-<!-- Body -->
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Candidate</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for candidate in candidates %}
-    <tr>
-        <td scope="row">
-          <a href="{% url 'candidates:edit_candidate' candidate.id %}">{{ candidate.first }} {{ candidate.last }}</a>
-        </td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      1 of 3
+    </div>
+    <div class="col-6">
+      2 of 3 (wider)
+    </div>
+    <div class="col">
+      3 of 3
+    </div>
+  </div>
 
 </body>

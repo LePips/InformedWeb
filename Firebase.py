@@ -30,10 +30,13 @@ class Firebase():
             Firebase()
         return Firebase.__instance
 
-    def get_candidate_ids(self):
-        candidates = self.candidates_reference.get()
-        ids = list(map(lambda x: x.id, candidates))
-        return ids
+    def get_candidates(self):
+        candidates_ids_ref = self.candidates_reference.get()
+        candidates = []
+        for ref in candidates_ids_ref:
+            candidate = self.get_candidate(ref.id)
+            candidates.append(candidate)
+        return candidates
 
     def get_election_ids(self):
         elections = self.elections_reference.get()
@@ -41,12 +44,25 @@ class Firebase():
         return ids
 
     def get_candidate(self, id):
-        document_ref = self.candidates_reference.document(id).get()
-        candidate_dict = document_ref.to_dict()
-        first = candidate_dict["first"]
-        last = candidate_dict["last"]
+        document_ref = self.candidates_reference.document(id)
+        document = document_ref.get()
+        dict = document_ref.get().to_dict()
+
         id = document_ref.id
-        candidate = Candidate(first, last, id)
+        first = dict["first"]
+        last = dict["last"]
+        elections = dict.get("elections")
+        image_url = dict.get("image_url")
+
+        sections_ref = document_ref.collection(u'sections')
+        sections = self.get_sections(sections_ref)
+
+        candidate = Candidate(id=id,
+                              first=first,
+                              last=last,
+                              elections=elections,
+                              image_url=image_url,
+                              sections=sections)
         return candidate
 
     def get_election(self, id):
@@ -59,9 +75,23 @@ class Firebase():
         document_ref.set({
             u'first': candidate.first,
             u'last': candidate.last,
-            u'elections': []
+            u'elections': candidate.elections,
+            u'image_url': candidate.image_url
         })
 
+        sections_ref = document_ref.collection(u'sections')
+        for section in candidate.sections:
+            sections_ref.document(section.title).set({
+                u'title': section.title,
+                u'content': section.content
+            })
+
+    def get_sections(self, sections_ref):
+        sections = []
+        for section in sections_ref.get():
+            sections.append(section.to_dict())
+
+        return sections
 
     # def getUsersNames(self):
     #     ids = self.getUserIds()

@@ -1,3 +1,5 @@
+import string
+import random
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
@@ -6,8 +8,14 @@ from .models import Candidate
 
 def candidates_list(request):
     template = 'candidates_list.html'
-    ids = Firebase.instance().get_candidate_ids()
-    context = {'ids': ids}
+    candidates = Firebase.instance().get_candidates()
+    context = {'candidates': candidates}
+    return render(request, template, context)
+
+def view_candidate(request, id):
+    template = 'view_candidate.html'
+    candidate = Firebase.instance().get_candidate(id)
+    context = {'candidate', candidate}
     return render(request, template, context)
 
 def edit_candidate(request, id):
@@ -17,8 +25,30 @@ def edit_candidate(request, id):
     return render(request, template, context)
 
 def set_candidate(request, id):
-    first = request.POST['first']
-    last = request.POST['last']
-    candidate = Candidate(first, last, id)
+    first = request.POST['first_name']
+    last = request.POST['last_name']
+    image_url = request.POST['image_url']
+    if len(image_url) < 5:
+        image_url = None # Hack to get null
+
+    sections = []
+    for key in request.POST:
+        if key.startswith("section_content_"):
+            section = {}
+            section["title"] = key[16:] # Hack
+            section["content"] = request.POST[key]
+            sections.append(section)
+    candidate = Candidate(first=first,
+                          last=last,
+                          id=id,
+                          image_url=image_url,
+                          sections=sections)
     Firebase.instance().set_candidate(candidate)
-    return HttpResponse("Set candidate with data: {}".format(candidate))
+    return redirect("/")
+
+def create_candidate(request):
+    id = id_generator()
+
+
+def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))
