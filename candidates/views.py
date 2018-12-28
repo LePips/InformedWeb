@@ -47,7 +47,16 @@ def set_candidate(request, id):
     return redirect("/")
 
 def create_candidate(request):
+    template = 'edit_candidate.html'
     id = id_generator()
+    candidate = Candidate(first=None,
+                          last=None,
+                          id=id,
+                          image_url=None,
+                          sections=None)
+    context = {'candidate': candidate}
+    return render(request, template, context)
+
 
 
 def id_generator(size=6, chars=string.ascii_uppercase + string.digits):

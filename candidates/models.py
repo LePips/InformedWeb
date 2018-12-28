@@ -14,9 +14,10 @@ class Candidate():
         self.sections = []
 
         sections_dict = kwargs.get("sections")
-        for section_dict in sections_dict:
-            section = Section(section_dict)
-            self.sections.append(section)
+        if sections_dict is not None:
+            for section_dict in sections_dict:
+                section = Section(section_dict)
+                self.sections.append(section)
 
 class Section():
     def __init__(self, section_dict):

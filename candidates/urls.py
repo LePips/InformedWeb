@@ -14,5 +14,5 @@ urlpatterns = [
     # /candidates/set/<id>
     path('set/<str:id>', views.set_candidate, name='set_candidate'),
     # /candidates/create
-    path('create', views.create_candidate, name='create_candidate')
+    path('create/', views.create_candidate, name='create_candidate')
 ]
