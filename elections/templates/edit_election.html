@@ -14,10 +14,79 @@
 	<a class="navbar-brand mb-0 h1" href="/">Informed Web Portal</a>
 </nav>
 
+<div class="container">
+	<div class="row" style="margin-top: 10px">
+		<div class="col-6">
+			<form action="{% url 'elections:set_election' election.id %}"
+						method='POST'> {% csrf_token %}
+				<!--Title -->
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="firstNameInput">Title</label>
+						<input type="text"
+									 class="form-control"
+									 id="firstNameInput"
+									 name="title"
+									 value="{{election.title}}">
+					</div>
+				</div>
 
-{% for key, value in election.items %}
-<p>Key:{{key}}<p>
-<p>-value:{{value}}</p>
-{% endfor %}
+				<!-- Category -->
+				<div class="input-group input-group-sm mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text"
+									id="inputGroup-sizing-sm">Category</span>
+					</div>
+					<input type="text"
+								 class="form-control"
+								 aria-label="Sizing example input"
+								 aria-describedby="inputGroup-sizing-sm"
+								 value="{{ election.category }}"
+								 name="category">
+				</div>
+
+				<!-- Cover image url -->
+				<div class="input-group input-group-sm mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text"
+									id="inputGroup-sizing-sm">Cover Image URL</span>
+					</div>
+					<input type="text"
+								 class="form-control"
+								 aria-label="Sizing example input"
+								 aria-describedby="inputGroup-sizing-sm"
+								 value="{{ election.cover_image_url }}"
+								 name="cover_image_url">
+				</div>
+
+				<!-- Sections -->
+				<div id="sections">
+					{% for section in election.sections %}
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<!-- <button class="btn btn-secondary"
+											type="button"
+											id="button-addon1">{{ section.title }}</button> -->
+							<textarea class="form-control"
+												aria-label="{{ section.title }}">{{ section.title }}</textarea>
+						</div>
+						<textarea class="form-control"
+											aria-label="{{ section.title }}"
+											name="section_content_{{ section.title }}">{{ section.content }}</textarea>
+					</div>
+					{% endfor %}
+				</div>
+
+				<!-- Submit Button and election id -->
+				<div class="form-row" style="margin-top: 10px">
+					<button class="btn btn-success btn-sm"
+									type="submit"
+									id="submit-button">Submit</button>
+					<p id="candidate-id" style="margin-left: 20px"> ID: {{ election.id }} </p>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 
 </body>

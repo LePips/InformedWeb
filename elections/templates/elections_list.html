@@ -18,14 +18,14 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">id</th>
+      <th scope="col">Election <a class="btn btn-sm btn-primary" href="{% url 'elections:create_election' %}" role="button">Add Election</th>
     </tr>
   </thead>
   <tbody>
-    {% for id in ids %}
+    {% for election in elections %}
     <tr>
         <td scope="row">
-          <a href="{% url 'elections:edit_election' id %}">{{ id }}</a>
+          <a href="{% url 'elections:edit_election' election.id %}">{{ election.title }}</a>
         </td>
     </tr>
     {% endfor %}

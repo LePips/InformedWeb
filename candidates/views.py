@@ -13,10 +13,8 @@ def candidates_list(request):
     return render(request, template, context)
 
 def view_candidate(request, id):
-    template = 'view_candidate.html'
-    candidate = Firebase.instance().get_candidate(id)
-    context = {'candidate', candidate}
-    return render(request, template, context)
+    # TODO
+    return
 
 def edit_candidate(request, id):
     template = 'edit_candidate.html'
@@ -56,8 +54,6 @@ def create_candidate(request):
                           sections=None)
     context = {'candidate': candidate}
     return render(request, template, context)
-
-
 
 def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
