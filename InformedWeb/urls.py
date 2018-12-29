@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     path('', include('home.urls')),
     path('candidates/', include('candidates.urls')),
-    path('elections/', include('elections.urls'))
+    path('elections/', include('elections.urls')),
+    path('requests/', include('info-requests.urls'))
 ]
