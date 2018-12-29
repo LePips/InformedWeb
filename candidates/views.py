@@ -42,7 +42,7 @@ def set_candidate(request, id):
                           image_url=image_url,
                           sections=sections)
     Firebase.instance().set_candidate(candidate)
-    return redirect("/")
+    return redirect("/candidates")
 
 def create_candidate(request):
     template = 'edit_candidate.html'
