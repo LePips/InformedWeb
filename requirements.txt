@@ -1,4 +1,5 @@
 django
+djangorestframework
 fabric==1.14.1
 firebase-admin
 google-cloud-firestore
