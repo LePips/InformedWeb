@@ -36,7 +36,7 @@ def startad():
     """
     Runs server at the admin page
     """
-    local('open "http://127.0.0.1:8080/admin" && python ./manage.py runserver 8080')
+    local('open "http://127.0.0.1:8080/admin" && python3 ./manage.py runserver 8080')
 
 @task
 @runs_once
@@ -48,19 +48,19 @@ def delpyc():
 
 @task
 @runs_once
-def shell():
-    """
-    Opens a Django shell on the target environment.
-    """
-    local('python manage.py shell')
-
-@task
-@runs_once
 def syncdb():
     """
     Syncs db
     """
-    local("python manage.py syncdb")
+    local("python3 manage.py syncdb")
+
+@task
+@runs_once
+def fastmigrate():
+    """
+    Makes migrations and migrates
+    """
+    local("python3 manage.py makemigrations && python3 manage.py migrate")
 
 @task
 @runs_once
@@ -68,7 +68,7 @@ def makemigrations():
     """
     Makes Django migrations
     """
-    local("python manage.py makemigrations")
+    local("python3 manage.py makemigrations")
 
 @task
 @runs_once
@@ -76,4 +76,4 @@ def migrate():
     """
     Makes Django migration
     """
-    local("python manage.py migrate")
+    local("python3 manage.py migrate")

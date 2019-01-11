@@ -45,12 +45,20 @@
 				    <span class="input-group-text"
 									id="inputGroup-sizing-sm">Image URL</span>
 				  </div>
-				  <input type="text"
+					{% if candidate.image_url is not None %}
+					  <input type="text"
+									 class="form-control"
+									 aria-label="Sizing example input"
+									 aria-describedby="inputGroup-sizing-sm"
+									 value="{{ candidate.image_url }}"
+									 name="image_url">
+					{% else %}
+					<input type="text"
 								 class="form-control"
 								 aria-label="Sizing example input"
 								 aria-describedby="inputGroup-sizing-sm"
-								 value="{{ candidate.image_url }}"
 								 name="image_url">
+					{% endif %}
 				</div>
 
 				<!-- Sections -->
