@@ -13,7 +13,7 @@ class CandidateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Candidate
-        fields = ('first', 'last', 'cover_image_url',
+        fields = ('first', 'last', 'id', 'cover_image_url',
                   'image_urls', 'candidate_area_type', 'last_edited',
                   'elections', 'sections')
 
@@ -22,5 +22,5 @@ class ElectionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Election
-        fields = ('title', 'cover_image_url', 'image_urls', 'date',
+        fields = ('title', 'id', 'cover_image_url', 'image_urls', 'date',
                   'election_area_type', 'last_edited', 'candidates', 'sections')
