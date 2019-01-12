@@ -11,15 +11,15 @@ class Candidate(models.Model):
     image_urls = fields.ArrayField(models.URLField(), null=True, blank=True)
     sections = GenericRelation(Section)
 
-    candidate_area_type_choices = (
+    type_choices = (
         ('State', 'State'),
         ('National', 'National'),
         ('Other', 'Other'),
         ('None', 'None')
     )
-    candidate_area_type = models.CharField(
+    type = models.CharField(
         max_length=10,
-        choices=candidate_area_type_choices,
+        choices=type_choices,
         default='None'
     )
     last_edited = models.DateField(auto_now=True)

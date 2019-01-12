@@ -9,7 +9,7 @@ class ElectionsInline(admin.TabularInline):
     extra = 1
 
 class CandidateAdmin(admin.ModelAdmin):
-    list_display = ('full_name', 'last_edited', 'candidate_area_type')
+    list_display = ('full_name', 'last_edited', 'type')
     inlines = [ElectionsInline, SectionInline]
     exclude = ['elections']
 
