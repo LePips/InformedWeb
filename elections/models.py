@@ -26,4 +26,4 @@ class Election(models.Model):
     last_edited = models.DateField(auto_now=True)
 
     def __str__(self):
-        return self.title + " - " + self.election_area_type
+        return self.title + " - " + self.type
