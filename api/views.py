@@ -18,7 +18,7 @@ def candidate_detail(request, id):
 def elections_list(request):
     elections = Election.objects.all()
     serializer = ElectionSerializer(elections, many=True)
-    return JsonResponse(serializer.data, safe=False)
+    return JsonResponse({"elections": serializer.data}, safe=False)
 
 def election_detail(request, id):
     election = Election.objects.get(id=id)
