@@ -8,7 +8,7 @@ from elections.models import Election
 def candidates_list(request):
     candidates = Candidate.objects.all()
     serializer = CandidateSerializer(candidates, many=True)
-    return JsonResponse(serializer.data, safe=False)
+    return JsonResponse({"candidates": serializer.data}, safe=False)
 
 def candidate_detail(request, id):
     candidate = Candidate.objects.get(id=id)
