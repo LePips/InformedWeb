@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'shared.apps.SharedConfig',
     'rest_framework',
-    'info-requests.apps.InfoRequestsConfig',
+    'infoRequests.apps.InfoRequestsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
