@@ -1,4 +1,4 @@
-https://img.shields.io/pypi/pyversions/django.svg
+[![Python](https://img.shields.io/pypi/pyversions/django.svg)](https://www.python.org/downloads/release/python-360/)
 
 # InformedWeb
 
