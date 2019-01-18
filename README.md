@@ -8,11 +8,7 @@ Uses Firebase to store user data.
 
 ### Installation
 
-Written in Python 3.7.1 and Django 2.1.4
-
-Download repo and to install all required dependencies, execute:
-
-`sh InstallDependencies.sh`
+Run: `sh InstallDependencies.sh`
 
 This will also update pip if not updated to the latest version.
 
