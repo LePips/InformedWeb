@@ -6,7 +6,17 @@ from candidates.models import Candidate
 from elections.models import Election
 
 def candidates_list(request):
-    candidates = Candidate.objects.all()
+    candidates = []
+
+    if request.GET.get('ids'):
+        ids = request.GET.get('ids')
+        ids = ids.split(',')
+        for id in ids:
+            candidate = Candidate.objects.get(id=id)
+            candidates.append(candidate)
+    else:
+        candidates = Candidate.objects.all()
+    
     serializer = CandidateSerializer(candidates, many=True)
     return JsonResponse({"candidates": serializer.data}, safe=False)
 
