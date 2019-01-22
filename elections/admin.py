@@ -8,9 +8,21 @@ class CandidatesInline(admin.TabularInline):
     model = Election.candidates.through
     extra = 1
 
+class ContributorsInline(admin.TabularInline):
+    model = Election.contributors.through
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
 class ElectionAdmin(admin.ModelAdmin):
     list_display = ('title', 'date')
-    inlines = [CandidatesInline, SectionInline]
+    inlines = [CandidatesInline, SectionInline, ContributorsInline]
     exclude = ['candidates']
 
 admin.site.register(Election, ElectionAdmin)

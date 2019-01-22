@@ -85,9 +85,9 @@ WSGI_APPLICATION = 'InformedWeb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('informed_web_database'),
-        'USER': os.environ.get('ethan_pippin'),
-        'PASSWORD': os.environ.get('starcraft2'),
+        'NAME': 'informed_web_database',
+        'USER': '',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '5432'
     }
@@ -96,7 +96,7 @@ DATABASES = {
 import dj_database_url
 
 db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
+# DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
