@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.postgres import fields
+from django.contrib.postgres.fields import ArrayField
 from django.contrib.contenttypes.fields import GenericRelation
 
 from shared.models import Section
@@ -8,7 +8,7 @@ class Candidate(models.Model):
     first = models.CharField(max_length=200)
     last = models.CharField(max_length=200)
     cover_image_url = models.URLField(null=True, blank=True)
-    image_urls = fields.ArrayField(models.URLField(), null=True, blank=True)
+    image_urls = ArrayField(models.URLField(), null=True, blank=True)
     sections = GenericRelation(Section)
 
     type_choices = (

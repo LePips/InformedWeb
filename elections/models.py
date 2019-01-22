@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.postgres import fields
+from django.contrib.postgres.fields import ArrayField
 from django.contrib.contenttypes.fields import GenericRelation
 
 from candidates.models import Candidate
@@ -9,7 +9,7 @@ class Election(models.Model):
     title = models.CharField(max_length=200)
     candidates = models.ManyToManyField(Candidate, related_name="elections")
     cover_image_url = models.URLField(null=True, blank=True)
-    image_urls = fields.ArrayField(models.URLField(), null=True, blank=True)
+    image_urls = ArrayField(models.URLField(), null=True, blank=True)
     sections = GenericRelation(Section)
     date = models.DateField()
 
