@@ -6,12 +6,16 @@ from . import views
 
 app_name = 'api'
 urlpatterns = [
-    # /api/candidates
+    # /api/candidates/
     path('candidates/', views.candidates_list),
     # /api/candidates/<id>
-    path('candidates/<int:id>', views.candidate_detail),
-    # /api/elections
+    path('candidates/<int:id>/', views.candidate_detail),
+    # /api/candidates/<id>/elections
+    path('candidates/<int:id>/elections/', views.candidate_elections),
+    # /api/elections/
     path('elections/', views.elections_list),
     # /api/elections/<id>
-    path('elections/<int:id>', views.election_detail)
+    path('elections/<int:id>/', views.election_detail),
+    # /api/elections/<id>/candidates/
+    path('elections/<int:id>/candidates/', views.election_candidates)
 ]
