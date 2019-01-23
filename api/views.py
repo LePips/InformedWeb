@@ -55,7 +55,6 @@ def elections_list(request):
         ids = ids.split(',')
         ids = filter(None, ids)
         for id in ids:
-            import ipdb; ipdb.set_trace()
             election = Election.objects.get(id=id)
             elections.append(election)
     else:
