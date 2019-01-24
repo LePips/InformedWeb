@@ -19,7 +19,7 @@ class CandidateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Candidate
         fields = ('first', 'last', 'id', 'cover_image_url',
-                  'image_urls', 'type', 'last_edited', 'elections',
+                  'image_urls', 'type', 'state', 'last_edited', 'elections',
                   'sections', 'contributors')
 
 class ElectionSerializer(serializers.ModelSerializer):
@@ -29,7 +29,7 @@ class ElectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Election
         fields = ('title', 'id', 'cover_image_url', 'image_urls',
-                  'date', 'type', 'last_edited', 'candidates',
+                  'date', 'type', 'state', 'last_edited', 'candidates',
                   'sections', 'contributors')
 
 class TextAnnouncementSerializer(serializers.ModelSerializer):
