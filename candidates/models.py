@@ -3,6 +3,7 @@ from django.contrib.postgres.fields import ArrayField
 from django.contrib.contenttypes.fields import GenericRelation
 
 from shared.models import Section
+from shared.states import make_states
 
 class Candidate(models.Model):
     first = models.CharField(max_length=200)
@@ -20,6 +21,12 @@ class Candidate(models.Model):
     type = models.CharField(
         max_length=10,
         choices=type_choices,
+        default='None'
+    )
+    # This field is only relevant if the type is state
+    state = models.CharField(
+        max_length=20,
+        choices = make_states(),
         default='None'
     )
     last_edited = models.DateField(auto_now=True)

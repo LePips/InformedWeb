@@ -21,7 +21,7 @@ class ContributorInline(admin.TabularInline):
         return False
 
 class CandidateAdmin(admin.ModelAdmin):
-    list_display = ('full_name', 'last_edited', 'type')
+    list_display = ('full_name', 'last_edited', 'type', 'state')
     inlines = [ElectionsInline, SectionInline, ContributorInline]
     search_fields = ['first', 'last']
     exclude = ['elections']
