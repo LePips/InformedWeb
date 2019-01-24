@@ -17,5 +17,7 @@ urlpatterns = [
     # /api/elections/<id>
     path('elections/<int:id>/', views.election_detail),
     # /api/elections/<id>/candidates/
-    path('elections/<int:id>/candidates/', views.election_candidates)
+    path('elections/<int:id>/candidates/', views.election_candidates),
+    # /api/announcements/
+    path('announcements/', views.get_announcements)
 ]

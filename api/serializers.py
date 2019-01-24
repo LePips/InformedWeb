@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from candidates.models import Candidate
 from elections.models import Election
+from announcements.models import TextAnnouncement
 
 class SectionField(serializers.RelatedField):
     def to_representation(self, value):
@@ -30,3 +31,8 @@ class ElectionSerializer(serializers.ModelSerializer):
         fields = ('title', 'id', 'cover_image_url', 'image_urls',
                   'date', 'type', 'last_edited', 'candidates',
                   'sections', 'contributors')
+
+class TextAnnouncementSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TextAnnouncement
+        fields = "__all__"

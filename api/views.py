@@ -1,9 +1,10 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from .serializers import CandidateSerializer, ElectionSerializer
+from .serializers import CandidateSerializer, ElectionSerializer, TextAnnouncementSerializer
 from candidates.models import Candidate
 from elections.models import Election
+from announcements.models import TextAnnouncement
 
 def candidates_list(request):
     """
@@ -79,4 +80,14 @@ def candidate_elections(request, id):
     elections = candidate.elections.all()
     serializer = ElectionSerializer(elections, many=True)
     json = { "candidate_id": id,  "elections": serializer.data}
+    return JsonResponse(json, safe=False)
+
+def get_announcements(request):
+    """
+    Returns all announcements of any type
+    """
+    textAnnouncements = TextAnnouncement.objects.all()
+    textAnnouncementSerializer = TextAnnouncementSerializer(textAnnouncements,
+                                                            many=True)
+    json = {"announcements": textAnnouncementSerializer.data}
     return JsonResponse(json, safe=False)

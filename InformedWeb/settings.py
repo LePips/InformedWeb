@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'shared.apps.SharedConfig',
     'rest_framework',
     'infoRequests.apps.InfoRequestsConfig',
+    'announcements.apps.AnnouncementsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
