@@ -3,6 +3,7 @@ from rest_framework import serializers
 from candidates.models import Candidate
 from elections.models import Election
 from announcements.models import TextAnnouncement
+from infoRequests.models import ElectionInfoRequest, CandidateInfoRequest
 
 class SectionField(serializers.RelatedField):
     def to_representation(self, value):
