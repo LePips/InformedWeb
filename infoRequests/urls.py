@@ -6,5 +6,5 @@ from . import views
 app_name="requests"
 urlpatterns = [
     # /requests/
-    path('', views.requests_list, name='requests_list')
+    path('create', views.create_info_request, name='create_info_request')
 ]
