@@ -15,8 +15,6 @@ def create_info_request(request):
     if not data:
         return HttpResponse(status=400)
 
-    import ipdb; ipdb.set_trace()
-
     try:
         model = None
         content = data['content']
