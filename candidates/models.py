@@ -11,6 +11,7 @@ class Candidate(models.Model):
     cover_image_url = models.URLField(null=True, blank=True)
     image_urls = ArrayField(models.URLField(), null=True, blank=True)
     sections = GenericRelation(Section)
+    last_edited = models.DateField(auto_now=True)
 
     type_choices = (
         ('State', 'State'),
@@ -23,13 +24,26 @@ class Candidate(models.Model):
         choices=type_choices,
         default='None'
     )
-    # This field is only relevant if the type is state
+    # This field is only relevant if the type is 'State'
     state = models.CharField(
         max_length=20,
         choices = make_states(),
         default='None'
     )
-    last_edited = models.DateField(auto_now=True)
+    party_choices = (
+        ('Democrat', 'Democrat'),
+        ('Republican', 'Republican'),
+        ('Independent', 'Independent'),
+        ('Other', 'Other'),
+        ('None', 'None')
+    )
+    party = models.CharField(
+        max_length=15,
+        choices=party_choices,
+        default='None'
+    )
+    # This field is only relevant if the type is 'Other'
+    other_party = models.CharField(max_length=30, blank=True)
 
     def __str__(self):
         return self.first + " " + self.last
