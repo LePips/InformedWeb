@@ -4,13 +4,10 @@
 
 Backend for Informed.
 
-Uses Firebase to store user data.
+### Docker
 
-### Installation
-
-Run: `sh InstallDependencies.sh`
-
-This will also update pip if not updated to the latest version.
+Uses Docker for hosting.
+Download Docker and run `docker-compose up -d` to get started.
 
 ### Fabfile
 
