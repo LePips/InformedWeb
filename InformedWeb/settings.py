@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'infoRequests.apps.InfoRequestsConfig',
     'announcements.apps.AnnouncementsConfig',
+    'articles.apps.ArticlesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -86,11 +87,10 @@ WSGI_APPLICATION = 'InformedWeb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'informed_web_database',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
