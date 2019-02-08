@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from .models import Candidate
 from shared.models import Section
-from shared.admin import SectionInline
+from shared.admin import SectionInline, CandidateRoleInline
 from infoRequests.models import CandidateInfoRequest
 
 class ElectionsInline(admin.TabularInline):
@@ -44,7 +44,7 @@ class InfoRequestsInline(admin.TabularInline):
 class CandidateAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'last_edited', 'type', 'state')
     inlines = [ElectionsInline, SectionInline,
-               ContributorInline, InfoRequestsInline]
+               CandidateRoleInline, InfoRequestsInline]
     search_fields = ['first', 'last']
     exclude = ['elections']
 

@@ -24,7 +24,7 @@ class Candidate(models.Model):
         choices=type_choices,
         default='None'
     )
-    # This field is only relevant if the type is 'State'
+    # This field is only relevant if the candidate type is 'State'
     state = models.CharField(
         max_length=20,
         choices = make_states(),
@@ -42,7 +42,7 @@ class Candidate(models.Model):
         choices=party_choices,
         default='None'
     )
-    # This field is only relevant if the type is 'Other'
+    # This field is only relevant if the party type is 'Other'
     other_party = models.CharField(max_length=30, blank=True)
 
     def __str__(self):
