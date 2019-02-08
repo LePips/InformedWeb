@@ -77,3 +77,19 @@ def migrate():
     Makes Django migration
     """
     local("python3 manage.py migrate")
+
+@task
+@runs_once
+def heroku_bash():
+    """
+    Connect to Heroku bash
+    """
+    local("heroku run bash -a informedweb")
+
+@task
+@runs_once
+def heroku_logs():
+    """
+    Show Heroku logs
+    """
+    local("heroku logs --tail -a informedweb")
