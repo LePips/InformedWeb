@@ -8,12 +8,12 @@ Backend for Informed.
 
 Uses Docker for hosting.
 Download Docker and run `docker-compose up -d` to get started.
+- [ ] 
 
 ### Fabfile
 
-Instead of using the `python3 manage.py runserver 8080` command, there is
-an available fabfile.py to shorten commands and increase functionality
-with only `fab start`
+There is a Fabfile available to shorten commands and make things easy.
+Run commands on the Docker container using `docker-compose run web [COMMAND]`
 
 ### Style
 
