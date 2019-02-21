@@ -21,7 +21,8 @@ class CandidateSerializer(serializers.ModelSerializer):
         model = Candidate
         fields = ('first', 'last', 'id', 'cover_image_url',
                   'image_urls', 'type', 'state', 'last_edited', 'elections',
-                  'sections', 'contributors')
+                  'sections', 'contributors', 'twitter', 'facebook',
+                  'instagram', 'wikipedia')
 
 class ElectionSerializer(serializers.ModelSerializer):
     sections = SectionField(many=True, read_only=True)

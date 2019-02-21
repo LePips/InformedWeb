@@ -11,6 +11,10 @@ class Candidate(models.Model):
     cover_image_url = models.URLField(null=True, blank=True)
     image_urls = ArrayField(models.URLField(), null=True, blank=True)
     sections = GenericRelation(Section)
+    twitter = models.URLField(null=True, blank=True)
+    facebook = models.URLField(null=True, blank=True)
+    instagram = models.URLField(null=True, blank=True)
+    wikipedia = models.URLField(null=True, blank=True)
     last_edited = models.DateField(auto_now=True)
 
     type_choices = (
