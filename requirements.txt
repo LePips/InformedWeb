@@ -4,3 +4,7 @@ fabric==1.14.1
 gunicorn==19.6.0
 django_heroku
 whitenoise
+ipdb
+Pillow
+requests
+psycopg2-binary
