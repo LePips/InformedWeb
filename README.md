@@ -18,3 +18,7 @@ Following (at least trying to) [Pep8](https://www.python.org/dev/peps/pep-0008/)
 # JSON
 
 - [ ] Create JSON docs
+
+# Disclaimer
+I don't have the time to clean it up, as it has been a long work in progress.
+It is very, very, messy. But glad that it works.
