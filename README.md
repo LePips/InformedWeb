@@ -3,6 +3,7 @@
 # InformedWeb
 
 Django backend for [Informed Web](http://informedweb.herokuapp.com/)
+
 Stores data about an election and its candidates
 
 ### Docker
