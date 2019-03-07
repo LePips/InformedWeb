@@ -2,23 +2,18 @@
 
 # InformedWeb
 
-Backend for Informed.
+Django backend for election data and its candidates
 
 ### Docker
 
 Uses Docker for hosting.
 Download Docker and run `docker-compose up -d` to get started.
-- [ ] 
 
-### Fabfile
-
-There is a Fabfile available to shorten commands and make things easy.
-Run commands on the Docker container using `docker-compose run web [COMMAND]`
+- [ ] host images online
 
 ### Style
 
-Following (at least trying to) Pep8
-https://www.python.org/dev/peps/pep-0008/
+Following (at least trying to) [Pep8](https://www.python.org/dev/peps/pep-0008/)
 
 # JSON
 
